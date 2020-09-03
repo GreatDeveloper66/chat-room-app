@@ -1,0 +1,23 @@
+{
+  "name": "chat-room-app",
+  "version": "1.0.0",
+  "description": "This app allows multiple users to communicate in a chat room in real time",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GreatDeveloper66/chat-room-app.git"
+  },
+  "keywords": [
+    "chat",
+    "sockets"
+  ],
+  "author": "Adam Shaffer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GreatDeveloper66/chat-room-app/issues"
+  },
+  "homepage": "https://github.com/GreatDeveloper66/chat-room-app#readme"
+}
