@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/GreatDeveloper66/chat-room-app/issues"
   },
-  "homepage": "https://github.com/GreatDeveloper66/chat-room-app#readme"
+  "homepage": "https://github.com/GreatDeveloper66/chat-room-app#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
 }
