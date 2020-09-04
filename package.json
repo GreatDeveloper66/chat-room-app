@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This app allows multiple users to communicate in a chat room in real time",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
