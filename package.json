@@ -36,6 +36,7 @@
     "es6-promise": "^4.2.8",
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
-    "express-session": "^1.17.1"
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.1"
   }
 }
