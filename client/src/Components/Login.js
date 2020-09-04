@@ -27,7 +27,7 @@ export default function Login(props) {
                 .then(resp => resp.json())
                 .then(data => {
                     console.log(data.json())
-                    props.history.push('/')
+                    props.history.push('/register')
                 })
                 .catch(err => console.log(err))
         }

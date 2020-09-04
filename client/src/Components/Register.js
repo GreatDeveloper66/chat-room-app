@@ -46,7 +46,7 @@ export default function Register(props){
     }
     const handleSwitch = event => {
         event.preventDefault()
-        props.history.push('/login')
+        props.history.push('/')
     }
     const handleChangeFirstName = event => {setFirstName(event.target.value)}
     const handleChangeLastName = event => {setLastName(event.target.value)}
