@@ -1,8 +1,8 @@
-import React, { useState } from "react" 
-import { Container, Row, Col } from 'react-bootstrap' 
+import React, { useState } from "react"
+import { Container, Row, Col } from 'react-bootstrap'
 import { URL } from './EnvVars'
 import fetch from 'isomorphic-fetch'
-          
+
 export default function Register(props){
     const fetchURL = `${URL}/register`
     const [ email, setEmail ] = useState('')
@@ -34,15 +34,14 @@ export default function Register(props){
             fetch(fetchURL, configObj)
                 .then(resp => resp.json())
                 .then(data => {
-                    console.log(data)
                     props.history.push('/')
                 })
-                .catch(err => console.log(err))
+                .catch(err => setpasswordMessage(`Error: ${err}`))
         }
         else {
             setpasswordMessage('Passwords in both fields must match')
         }
-        
+
     }
     const handleSwitch = event => {
         event.preventDefault()
@@ -54,7 +53,7 @@ export default function Register(props){
     const handleChangePassword = event => {setPassword(event.target.value)}
     const handleChangeConfirmPassword = event => {setconfirmPassword(event.target.value)}
     const handleChangeEmail = event => {setEmail(event.target.value)}
-   
+
     return (
         <Container>
             <Row d-flex="justify-content-center">
@@ -66,36 +65,36 @@ export default function Register(props){
 
                 <div className="form-group">
                     <label>First name</label>
-                    <input type="text" className="form-control" placeholder="First name" 
+                    <input type="text" className="form-control" placeholder="First name"
                     value={ firstName } onChange={ handleChangeFirstName }/>
                 </div>
 
                 <div className="form-group">
                     <label>Last name</label>
-                    <input type="text" className="form-control" placeholder="Last name" 
+                    <input type="text" className="form-control" placeholder="Last name"
                     value={ lastName } onChange={ handleChangeLastName }/>
                 </div>
 
                 <div className="form-group">
                     <label>username</label>
-                    <input type="text" className="form-control" placeholder="User Name" 
+                    <input type="text" className="form-control" placeholder="User Name"
                     value={ userName } onChange={ handleChangeUserName }/>
                 </div>
 
                 <div className="form-group">
                     <label>Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter email" 
+                    <input type="email" className="form-control" placeholder="Enter email"
                     value={ email } onChange={ handleChangeEmail }/>
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" 
+                    <input type="password" className="form-control" placeholder="Enter password"
                     value={ password } onChange = { handleChangePassword }/>
                 </div>
                 <div className="form-group">
                     <label>Confirm Password</label>
-                    <input type="password" className="form-control" placeholder="Confirm password" 
+                    <input type="password" className="form-control" placeholder="Confirm password"
                     value={ confirmPassword } onChange = { handleChangeConfirmPassword }/>
                 </div>
 
@@ -112,7 +111,6 @@ export default function Register(props){
                 {passwordMessage}
             </Row>
         </Container>
-        
+
     )
-}        
-            
+}
