@@ -111,7 +111,7 @@ export default function Register(props){
               <Col>
               </Col>
               <Col d-flex="justify-content-center">
-                <Alert>
+                <Alert variant='warning'>
                   {passwordMessage}
                 </Alert>
               </Col>
