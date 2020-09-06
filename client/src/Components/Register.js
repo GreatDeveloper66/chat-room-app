@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Alert } from 'react-bootstrap'
 import { URL } from './EnvVars'
 import fetch from 'isomorphic-fetch'
 
@@ -108,7 +108,15 @@ export default function Register(props){
                 </Col>
             </Row>
             <Row d-flex="justify-content-center">
-                {passwordMessage}
+              <Col>
+              </Col>
+              <Col d-flex="justify-content-center">
+                <Alert>
+                  {passwordMessage}
+                </Alert>
+              </Col>
+              <Col>
+              </Col>
             </Row>
         </Container>
 
