@@ -41,7 +41,6 @@ export default function Register(props){
                   }
                 })
                 .then(data => {
-                    res.send('user saved')
                     props.history.push('/')
                 })
                 .catch(err => {
