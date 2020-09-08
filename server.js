@@ -32,6 +32,7 @@ app.post('/register', async (req,res) => {
             }
             else {
             client.db(database).collection(col).insertOne(userObj)
+            res.send('user saved')
           }
         })
 })
