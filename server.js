@@ -24,12 +24,15 @@ app.post('/register', async (req,res) => {
         "email": req.body.email,
         "password": password
     }
-    
+
     mongodb.MongoClient.connect(process.env.MONGODB_URI || url,
-        { useNewUrlParser: true }, (err, client) => { 
-            if(err) {res.send(err)}
+        { useNewUrlParser: true }, (err, client) => {
+            if(err) {
+              res.send(err)
+            }
+            else {
             client.db(database).collection(col).insertOne(userObj)
-            res.send('user inserted')
+          }
         })
 })
 
