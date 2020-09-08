@@ -32,11 +32,21 @@ export default function Register(props){
                 body: JSON.stringify(userObj)
             }
             fetch(fetchURL, configObj)
-                .then(resp => resp.json())
+                .then(res => {
+                  if(!res.ok){
+                    throw Error(res.statusText)
+                  }
+                  else {
+                    return res
+                  }
+                })
                 .then(data => {
                     props.history.push('/')
                 })
-                .catch(err => setpasswordMessage(`Error: ${err}`))
+                .catch(err => {
+                  setpasswordMessage(`Error: ${err}`)
+                })
+
         }
         else {
             setpasswordMessage('Passwords in both fields must match')
