@@ -24,12 +24,18 @@ export default function Login(props) {
                 body: JSON.stringify(userObj)
             }
             fetch(fetchURL, configObj)
-                .then(resp => resp.json())
-                .then(data => {
-                    console.log(data.json())
-                    props.history.push('/register')
+                .then(res => {
+                  if(!res.ok){
+                    throw Error(res.statusText)
+                  }
+                  else {
+                    return res.json()
+                  }
                 })
-                .catch(err => console.log(err))
+                .then(data => {
+                    props.history.push('/ChatRoom')
+                })
+                .catch(err => setpasswordMessage(`Error: ${err}`))
         }
         const handleSwitch = event => {
             event.preventDefault()
@@ -49,13 +55,13 @@ export default function Login(props) {
 
                 <div className="form-group">
                     <label>Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter email" 
+                    <input type="email" className="form-control" placeholder="Enter email"
                       value={userName} onChange={handleChangeUserName}/>
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" 
+                    <input type="password" className="form-control" placeholder="Enter password"
                         value={password} onChange={handleChangePassword} />
                 </div>
 
