@@ -15,7 +15,6 @@ export default function Login(props) {
                 userName: userName,
                 password: password
             }
-            console.log('userObj', userObj)
             const configObj = {
                 method: "POST",
                 headers: {
@@ -27,6 +26,7 @@ export default function Login(props) {
             fetch(fetchURL, configObj)
                 .then(res => {
                   if(!res.ok){
+                    console.log('res not ok')
                     throw Error(res.statusText)
                   }
                   else {
@@ -36,7 +36,10 @@ export default function Login(props) {
                 .then(data => {
                     props.history.push('/ChatRoom')
                 })
-                .catch(err => setpasswordMessage(`Error: ${err}`))
+                .catch(err => {
+                  console.log('err not ok')
+                  setpasswordMessage(`Error: ${err}`)
+                })
         }
         const handleSwitch = event => {
             event.preventDefault()
