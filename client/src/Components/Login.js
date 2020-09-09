@@ -6,6 +6,7 @@ import fetch from 'isomorphic-fetch'
 export default function Login(props) {
         const [ userName, setuserName ] = useState('')
         const [ password, setPassword ] = useState('')
+        const [ passwordMessage, setpasswordMessage ] = useState('')
 
         const fetchURL = `${URL}/login`
         const handleSubmit = event => {
@@ -80,6 +81,17 @@ export default function Login(props) {
                     </Col>
                     <Col>
                     </Col>
+                </Row>
+                <Row d-flex="justify-content-center">
+                  <Col>
+                  </Col>
+                  <Col d-flex="justify-content-center">
+                    <Alert variant='warning'>
+                      {passwordMessage}
+                    </Alert>
+                  </Col>
+                  <Col>
+                  </Col>
                 </Row>
             </Container>
         )
