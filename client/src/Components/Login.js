@@ -58,8 +58,8 @@ export default function Login(props) {
                 <h3>Sign In</h3>
 
                 <div className="form-group">
-                    <label>Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter email"
+                    <label>User Name</label>
+                    <input type="text" className="form-control" placeholder="Enter User Name"
                       value={userName} onChange={handleChangeUserName}/>
                 </div>
 
