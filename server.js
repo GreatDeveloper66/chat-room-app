@@ -4,6 +4,8 @@ import path from 'path'
 import mongodb from 'mongodb'
 import bcrypt from 'bcrypt'
 import bodyParser from 'body-parser'
+import validator from 'validator'
+import jwt from 'jsonwebtoken'
 dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 3000
