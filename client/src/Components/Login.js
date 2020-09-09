@@ -30,7 +30,7 @@ export default function Login(props) {
                     throw Error(res.statusText)
                   }
                   else {
-                    return res.json()
+                    return res
                   }
                 })
                 .then(data => {
