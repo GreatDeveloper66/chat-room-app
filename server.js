@@ -50,8 +50,9 @@ app.post('/login', async (req,res) => {
         }
         else {
           const user = await client.db(DATABASE).collection(COL).findOne({"userName": userName })
-
+          console.log('user', userName)
           if(!user) {
+            console.log('user not found')
             res.status(401).send({error: "Login failed! User not found"})
           }
           else {
@@ -61,7 +62,7 @@ app.post('/login', async (req,res) => {
             }
             else {
               const token = jwt.sign({id: user.id }, JWT_KEY )
-              return res.send({"userName": userName, token })
+              return res.send({"userName": userName, "token": token })
             }
           }
         }
