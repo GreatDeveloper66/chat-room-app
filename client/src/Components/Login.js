@@ -35,6 +35,7 @@ export default function Login(props) {
                 })
                 .then(data => {
                     window.localStorage.setItem('JWT', data.token)
+                    console.log(window.localStorage.JWT)
                     props.history.push('/ChatRoom')
                 })
                 .catch(err => {
