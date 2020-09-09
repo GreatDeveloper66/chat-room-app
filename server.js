@@ -7,9 +7,9 @@ import bodyParser from 'body-parser'
 dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 3000
-const url = 'mongodb://127.0.0.1:27017'
-const database = 'chat-room-app'
-const col = 'User'
+const URL = process.env.URL
+const DATABASE = process.env.DATABASE
+const COL = process.env.COL
 
 
 app.use(express.static(path.join(path.resolve(), "client","build")))
@@ -25,13 +25,13 @@ app.post('/register', async (req,res) => {
         "password": password
     }
 
-    mongodb.MongoClient.connect(process.env.MONGODB_URI || url,
+    mongodb.MongoClient.connect(process.env.MONGODB_URI || URL,
         { useNewUrlParser: true }, (err, client) => {
             if(err) {
               res.send(err)
             }
             else {
-            client.db(database).collection(col).insertOne(userObj)
+            client.db(DATABASE).collection(COL).insertOne(userObj)
             res.send('user saved')
           }
         })
