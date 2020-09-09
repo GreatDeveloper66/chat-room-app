@@ -37,7 +37,7 @@ export default function Register(props){
                     throw Error(res.statusText)
                   }
                   else {
-                    return res
+                    return res.json()
                   }
                 })
                 .then(data => {
