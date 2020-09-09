@@ -44,7 +44,7 @@ app.post('/login', async (req,res) => {
   try {
     const { userName, password } = req.body
     mongodb.MongoClient.connect(process.env.MONGODB_URI || URL,
-      { useNewUrlParser: true }, (err, client) => {
+      { useNewUrlParser: true }, async (err, client) => {
         if(err) {
           res.send(err)
         }
@@ -57,7 +57,7 @@ app.post('/login', async (req,res) => {
           else {
             const isMatch = await bcrypt.compare(password, user.password)
             if(!isMatch) {
-              return res.status(401).send{error: "Login failed! Incorrect password"}
+              return res.status(401).send({error: "Login failed! Incorrect password"})
             }
             else {
               const token = jwt.sign({id: user.id }, JWT_KEY )
