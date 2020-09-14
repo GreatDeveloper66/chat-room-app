@@ -34,8 +34,8 @@ app.post('/register', async (req,res) => {
               res.send(err)
             }
             else {
-            client.db(DATABASE).collection(COL).insertOne(userObj)
-            res.send('user saved')
+              client.db(DATABASE).collection(COL).insertOne(userObj)
+              res.send('user saved')
           }
         })
 })
@@ -50,9 +50,7 @@ app.post('/login', async (req,res) => {
         }
         else {
           const user = await client.db(DATABASE).collection(COL).findOne({"userName": userName })
-          console.log('user', userName)
           if(!user) {
-            console.log('user not found')
             res.status(401).send({error: "Login failed! User not found"})
           }
           else {
@@ -62,15 +60,26 @@ app.post('/login', async (req,res) => {
             }
             else {
               const token = jwt.sign({id: user.id }, JWT_KEY )
-              return res.send({"userName": userName, "token": token })
+              const userInfo = {
+                "id": user.id,
+                "firstName": user.firstName,
+                "lastName": user.lastName,
+                "userName": user.userName,
+                "email": user.email
+              }
+              const returnedUser = {"user": userInfo, "token": token }
+              console.log(returnedUser)
+              res.status(200).send(returnedUser)
             }
           }
         }
       })
+      res.status('testing testing...')
   }
-  catch {
+  catch{
     res.status(400).send(error)
   }
+
 })
 
 app.get('*', (req,res) => {
@@ -78,5 +87,5 @@ app.get('*', (req,res) => {
 })
 
 app.listen(PORT, () => {
-	console.log(`Server listening on port ${PORT}.`);
+	console.log(`Server listening on port ${PORT}.`)
 });
