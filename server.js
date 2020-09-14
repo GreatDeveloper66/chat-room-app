@@ -6,6 +6,7 @@ import bcrypt from 'bcrypt'
 import bodyParser from 'body-parser'
 import validator from 'validator'
 import jwt from 'jsonwebtoken'
+import cookieParser from 'cookie-parser'
 dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -18,6 +19,7 @@ const JWT_KEY = process.env.JWT_KEY
 app.use(express.static(path.join(path.resolve(), "client","build")))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(cookieParser())
 app.post('/register', async (req,res) => {
     const password = await bcrypt.hash(req.body.password, 10)
     const userObj ={
@@ -65,11 +67,13 @@ app.post('/login', async (req,res) => {
                 "firstName": user.firstName,
                 "lastName": user.lastName,
                 "userName": user.userName,
-                "email": user.email
+                "email": user.email,
+                "token": token
               }
-              const returnedUser = {"user": userInfo, "token": token }
-              console.log(returnedUser)
-              res.status(200).send(returnedUser)
+              //const returnedUser = {"user": userInfo, "token": token }
+              console.log(userInfo)
+              res.cookie("user", userInfo)
+              res.status(200).send(userInfo)
             }
           }
         }
